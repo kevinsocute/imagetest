@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KEVIN SANCHEZ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Press+Start+2P&display=swap');
+        
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background-color: #000;
+            color: #0f0;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 80, 0, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 80, 0, 0.1) 0%, transparent 20%);
+        }
+        
+        .glitch {
+            position: relative;
+        }
+        
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .glitch::before {
+            color: #0ff;
+            z-index: -1;
+            animation: glitch-effect 3s infinite;
+        }
+        
+        .glitch::after {
+            color: #f0f;
+            z-index: -2;
+            animation: glitch-effect 2s infinite reverse;
+        }
+        
+        @keyframes glitch-effect {
+            0% { transform: translate(0); }
+            20% { transform: translate(-3px, 3px); }
+            40% { transform: translate(-3px, -3px); }
+            60% { transform: translate(3px, 3px); }
+            80% { transform: translate(3px, -3px); }
+            100% { transform: translate(0); }
+        }
+        
+        .matrix-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 255, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 255, 0, 0); }
+        }
+        
+        .terminal-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background: #0f0;
+            margin-left: 5px;
+            animation: blink 1s step-end infinite;
+        }
+        
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .hacked-stamp {
+            position: absolute;
+            transform: rotate(-15deg);
+            opacity: 0.8;
+            font-size: 5rem;
+            color: rgba(255, 0, 0, 0.5);
+            z-index: 10;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="matrix" class="matrix-rain"></canvas>
+    
+    <div class="hacked-stamp top-1/4 left-1/4">ĐÃ</div>
+    <div class="hacked-stamp bottom-1/4 right-1/4">BỊ HACK</div>
+    
+    <div class="min-h-screen flex flex-col items-center justify-center px-4 py-12">
+        <div class="w-full max-w-4xl mx-auto text-center">
+            <!-- Header with glitch effect -->
+            <h1 class="glitch text-5xl md:text-7xl font-bold mb-8 relative inline-block" data-text="HỆ THỐNG BỊ HACKED">
+                HỆ THỐNG BỊ HACKED
+            </h1>
+            
+            <!-- Warning box -->
+            <div class="bg-black border-2 border-red-500 rounded-lg p-6 mb-8 transform hover:scale-105 transition-transform duration-300 pulse">
+                <div class="flex items-center justify-center mb-4">
+                    <i class="fas fa-exclamation-triangle text-red-500 text-3xl mr-3"></i>
+                    <h2 class="text-2xl md:text-3xl font-bold text-red-500">CẢNH BÁO: BẠN BỊ HACK</h2>
+                </div>
+                <p class="text-lg md:text-xl text-green-300 mb-4">
+                    Máy chủ bạn đã bị hack bởi <span class="text-red-400">REVIVE CITY</span>. Tất cả dữ liệu sẽ bị mất.
+                </p>
+                <p class="text-sm md:text-base text-green-200">
+                    Các anticheat và anti của bạn không đủ trình để ngăn chặn chúng tôi. Hãy coi đây là một lời cảnh cáo.
+                </p>
+            </div>
+            
+            <!-- Team info -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-gray-900 bg-opacity-70 border border-green-500 rounded-lg p-6 hover:border-red-500 transition-colors duration-300">
+                    <h3 class="text-xl font-bold text-green-400 mb-4 flex items-center">
+                        <i class="fas fa-users mr-2"></i> THÔNG TIN
+                    </h3>
+                    <ul class="space-y-2 text-left">
+                        <li><span class="text-green-300">Tên:</span> <span class="text-white">Revive City</span></li>
+                        <li><span class="text-green-300">Trưởng:</span> <span class="text-white">Kevin</span></li>
+                        <li><span class="text-green-300">Thành viên:</span> <span class="text-white">XPLOITER</span></li>
+                        <li><span class="text-green-300">Quốc gia:</span> <span class="text-white">Việt Nam</span></li>
+                        <li><span class="text-green-300">Châm ngôn:</span> <span class="text-white">"Làm vì đam mê"</span></li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-900 bg-opacity-70 border border-green-500 rounded-lg p-6 hover:border-red-500 transition-colors duration-300">
+                    <h3 class="text-xl font-bold text-green-400 mb-4 flex items-center">
+                        <i class="fas fa-server mr-2"></i> THÔNG TIN
+                    </h3>
+                    <ul class="space-y-2 text-left">
+                        <li><span class="text-green-300">IP:</span> <span class="text-white" id="ip-address">Đang tải...</span></li>
+                        <li><span class="text-green-300">OS:</span> <span class="text-white">Linux 5.15.0-76-generic</span></li>
+                        <li><span class="text-green-300">Tấn công lúc:</span> <span class="text-white" id="compromised-time"></span></li>
+                        <li><span class="text-green-300">Truy cập data:</span> <span class="text-white">Tất cả datas</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Message -->
+            <div class="bg-black border border-green-500 rounded-lg p-6 mb-8 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-500 to-transparent"></div>
+                <h3 class="text-2xl font-bold text-green-400 mb-4">
+                    <i class="fas fa-comment-alt mr-2"></i> LỜI NHẮN TỪ CHÚNG TÔi
+                </h3>
+                <div class="terminal-text text-left">
+                    <p class="mb-2"><span class="text-green-400">root@phantom:~#</span> echo "Quá gà."</p>
+                    <p class="mb-2 text-white">Quá gà.</p>
+                    
+                    <p class="mb-2"><span class="text-green-400">root@phantom:~#</span> echo "Tôi đã điều khiển máy chủ."</p>
+                    <p class="mb-2 text-white">Tôi đã điều khiển máy chủ.</p>
+                    
+                    <p class="mb-2"><span class="text-green-400">root@phantom:~#</span> echo "Hãy chuyển vào đây."</p>
+                    <p class="text-white">Hãy chuyển vào đây.<span class="terminal-cursor"></span></p>
+                </div>
+            </div>
+            
+            <!-- Countdown -->
+            <div class="bg-black bg-opacity-70 border border-red-500 rounded-lg p-6">
+                <h3 class="text-xl font-bold text-red-400 mb-4 flex items-center justify-center">
+                    <i class="fas fa-clock mr-2"></i> HỆ THỐNG SẼ TỰ HỦY TRONG:
+                </h3>
+                <div class="flex justify-center space-x-4 text-3xl font-mono" id="countdown">
+                    <div class="text-center">
+                        <div class="bg-gray-900 px-4 py-2 rounded" id="hours">00</div>
+                        <div class="text-xs mt-1">TIẾNG</div>
+                    </div>
+                    <div class="text-green-400">:</div>
+                    <div class="text-center">
+                        <div class="bg-gray-900 px-4 py-2 rounded" id="minutes">00</div>
+                        <div class="text-xs mt-1">PHÚT</div>
+                    </div>
+                    <div class="text-green-400">:</div>
+                    <div class="text-center">
+                        <div class="bg-gray-900 px-4 py-2 rounded" id="seconds">00</div>
+                        <div class="text-xs mt-1">GIÂY</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="mt-12 text-sm text-green-400 opacity-70">
+                <p>Đây là một minh chứng về lỗ hổng bảo mật. Bảo mật hệ thống.</p>
+                <p class="mt-2">© 2025 Xeon Thread</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Matrix rain effect
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const nums = '0123456789';
+        
+        const alphabet = katakana + latin + nums;
+        
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        
+        const rainDrops = [];
+        
+        for (let x = 0; x < columns; x++) {
+            rainDrops[x] = 1;
+        }
+        
+        const draw = () => {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#0F0';
+            ctx.font = fontSize + 'px monospace';
+            
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+                
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        };
+        
+        setInterval(draw, 30);
+        
+        // Countdown timer
+        // Thiết lập thời điểm kết thúc countdown (2 giờ sau khi tải trang)
+        const targetTime = new Date().getTime() + 2 * 60 * 60 * 1000;
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const diff = targetTime - now;
+
+            if (diff <= 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerHTML = '<div class="text-red-500 text-2xl">SYSTEM DESTROYED</div>';
+                return;
+            }
+
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        
+        // Simulate IP address fetch
+        setTimeout(() => {
+            document.getElementById('ip-address').textContent = '192.168.1.' + Math.floor(Math.random() * 255);
+        }, 1500);
+        
+        // Set compromised time
+        const now = new Date();
+        document.getElementById('compromised-time').textContent = now.toLocaleString();
+        
+        // Terminal typing effect
+        const terminalLines = document.querySelectorAll('.terminal-text p');
+        let delay = 0;
+        
+        terminalLines.forEach((line, index) => {
+            if (line.querySelector('.terminal-cursor')) {
+                const text = line.textContent.replace(' ', '').replace(' ', '');
+                line.innerHTML = line.innerHTML.split('>')[0] + '>';
+                
+                setTimeout(() => {
+                    typeWriter(line, text, 0);
+                }, delay);
+                
+                delay += text.length * 50 + 1000;
+            }
+        });
+        
+        function typeWriter(element, text, i) {
+            if (i < text.length) {
+                element.innerHTML = element.innerHTML.replace(/<span class="terminal-cursor"><\/span>/, '');
+                element.innerHTML += text.charAt(i) + '<span class="terminal-cursor"></span>';
+                setTimeout(() => typeWriter(element, text, i + 1), 50 + Math.random() * 50);
+            }
+        }
+        
+        // Resize handler for canvas
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>
